@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>Киберспорт әлемі</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+header {
+    background: #020617;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+}
+nav a {
+    color: #94a3b8;
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #38bdf8;
+}
+section {
+    padding: 40px;
+}
+.hero {
+    background: linear-gradient(135deg,#020617,#1e293b);
+    text-align: center;
+}
+.hero h1 {
+    font-size: 40px;
+    color: #38bdf8;
+}
+.card {
+    background: #020617;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #334155;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    cursor: pointer;
+    background: #020617;
+}
+footer {
+    background: #020617;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+button {
+    padding: 10px 15px;
+    background: #38bdf8;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.chatbox {
+    background: #020617;
+    padding: 15px;
+    border-radius: 12px;
+}
+input {
+    padding: 8px;
+    width: 70%;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<a href="#home">Home</a>
+<a href="#games">Ойындар</a>
+<a href="#tournaments">Турнирлер</a>
+<a href="#teams">Командалар</a>
+<a href="#ai">AI агент</a>
+</nav>
+</header>
+
+<section id="home" class="hero">
+<h1>🎮 Киберспорт әлемі</h1>
+<p>Киберспорт – заманауи цифрлық спорт индустриясы</p>
+<video width="60%" controls>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4">
+</video>
+<br><br>
+<audio controls>
+<source src="https://www.w3schools.com/html/horse.mp3">
+</audio>
+</section>
+
+<section id="games">
+<h2>Танымал ойындар</h2>
+<div class="card">CS2 – тактикалық шутер</div>
+<div class="card">Dota 2 – MOBA стратегиясы</div>
+<div class="card">Valorant – киберспорттық FPS</div>
+</section>
+
+<section id="tournaments">
+<h2>Турнирлер (динамикалық кесте)</h2>
+<table id="tourTable">
+<tr>
+<th onclick="sortTable(0)">Турнир</th>
+<th onclick="sortTable(1)">Жүлде ($)</th>
+</tr>
+<tr><td>The International</td><td>40000000</td></tr>
+<tr><td>CS Major</td><td>2000000</td></tr>
+<tr><td>Valorant Champions</td><td>3000000</td></tr>
+</table>
+</section>
+
+<section id="teams">
+<h2>Танымал командалар</h2>
+<div class="card">NAVI (Украина)</div>
+<div class="card">Team Spirit</div>
+<div class="card">FaZe Clan</div>
+</section>
+
+<section id="ai">
+<h2>🤖 AI агент және чат-бот</h2>
+
+<div class="card">
+<button onclick="aiNews()">AI жаңалық алу</button>
+<p id="aiResult"></p>
+</div>
+
+<div class="chatbox">
+<p><b>Чат-бот:</b></p>
+<input id="userMsg" placeholder="Сұрақ жазыңыз...">
+<button onclick="chat()">Жіберу</button>
+<p id="botReply"></p>
+</div>
+
+<h3>Google форма</h3>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORM/viewform?embedded=true"
+width="100%" height="400"></iframe>
+</section>
+
+<footer>
+<p>Автор: Zhanel Zhanbayeva</p>
+<p>Пән: АКТ | Мамандығы: Программалық инженерия</p>
+<p>© 2025</p>
+</footer>
+
+<script>
+function aiNews() {
+document.getElementById("aiResult").innerText =
+"AI агент: Соңғы тренд – мобильді киберспорт пен VR турнирлердің дамуы.";
+}
+
+function chat() {
+let msg = document.getElementById("userMsg").value.toLowerCase();
+let reply = "Мен киберспорт туралы ақпарат бере аламын 🙂";
+
+if (msg.includes("dota")) reply = "Dota 2 – ең ірі MOBA киберспорт ойыны.";
+if (msg.includes("cs")) reply = "CS2 – командалық тактикалық шутер.";
+if (msg.includes("турнир")) reply = "Ең ірі турнир – The International.";
+
+document.getElementById("botReply").innerText = reply;
+}
+
+function sortTable(n) {
+let table = document.getElementById("tourTable");
+let rows = Array.from(table.rows).slice(1);
+rows.sort((a,b)=>b.cells[n].innerText - a.cells[n].innerText);
+rows.forEach(r=>table.appendChild(r));
+}
+</script>
+
+</body>
+</html>
